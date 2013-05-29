@@ -4,10 +4,13 @@ G.Routers.GistsRouter = Backbone.Router.extend({
     this.$sidebar = $(sidebar);
     this.$content = $(content);
     this.gists = gists;
+    this.favoriteGists = new G.Collections.Favorites();
+    this.favoriteGists.fetch();
   },
 
   routes: {
-    "": "index"
+    "": "index",
+    "gists/:id": "detail"
   },
 
   index: function() {
@@ -18,5 +21,17 @@ G.Routers.GistsRouter = Backbone.Router.extend({
     });
 
     that.$sidebar.html(gistsIndexView.render().$el);
+  },
+
+  detail: function(id) {
+    var that = this;
+
+    var gistDetailView = new G.Views.GistDetailView({
+      model: that.gists.get(id)
+    });
+    console.log(gistDetailView.model);
+    console.log(id);
+
+    that.$content.html(gistDetailView.render().$el);
   }
-})
+});

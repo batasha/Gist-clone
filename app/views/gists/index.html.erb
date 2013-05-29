@@ -5,9 +5,9 @@
 </div>
 
 <script type="text/javascript">
-  $(function() {
+    var gistsData = <%= @gists.to_json.html_safe %>;  $(function() {
 
-    var gistsData = <%= @gists.to_json.html_safe %>;
+
 
     window.G.initialize(
       $('#sidebar')[0],
