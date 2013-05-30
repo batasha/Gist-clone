@@ -14,7 +14,7 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite = current_user.favorites.build(params[:favorite])
+    @favorite = current_user.favorites.build(:gist_id => params[:gist_id])
 
     if @favorite.save
       render json: @favorite.gist #???
@@ -24,7 +24,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @favorite = Favorite.find(params[:id])
+    @favorite = current_user.favorites.where(:gist_id => params[:gist_id]).first
     @gist = @favorite.gist
     @favorite.destroy
     render json: @gist
