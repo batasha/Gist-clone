@@ -2,7 +2,6 @@ G.Views.GistDetailView = Backbone.View.extend({
   events: {
     "click button#favorite" : "favorite",
     "click button#unfavorite" : "unfavorite"
-    // this.model.on("change", this.render, )
   },
 
   render: function() {

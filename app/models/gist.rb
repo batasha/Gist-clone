@@ -3,6 +3,7 @@ class Gist < ActiveRecord::Base
 
   belongs_to :user
   has_many :favorites
+  has_many :gist_files
 
   validates :title, :user_id, presence: true
 end
