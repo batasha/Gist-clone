@@ -38,8 +38,9 @@ G.Routers.GistsRouter = Backbone.Router.extend({
     var that = this;
 
     var newGistFormView = new G.Views.NewGistFormView();
-    console.log(newGistFormView);
 
+//that.$content.html("Hello World");
     that.$content.html(newGistFormView.render().$el);
+    console.log("I just rendered");
   }
 });

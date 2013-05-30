@@ -8,15 +8,9 @@ G.Views.NewGistFormView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log("I'm in the render function!");
     var that = this;
-    console.log(that.gistForm);
-    //debugger;
     //that.gistForm.render();
-    console.log(that.gistForm.el);
-
-    that.$el.html(that.gistForm.el);
-    $("#content").append(that.gistForm.render().el);
+    that.$el.html(that.gistForm.render().el);
     return that;
   }
 });
