@@ -1,10 +1,6 @@
 G.Collections.Favorites = Backbone.Collection.extend({
-  model: G.Models.Favorite,
+  model: G.Models.Gist,
   url: "/favorites"
-
-  favorited: function(current_gist_id) {
-    this.
-  }
 })
 
 

@@ -1,11 +1,12 @@
-<h2><%= gist.get('title') %></h2>
+<h2><%= gist.escape('title') %></h2>
 
 <p>
   Here lies your gist.
 </p>
 
+<% if (gist.isFavorite) { %>
+  <button id="unfavorite">Unfavorite</button>
+<% } else { %>
+  <button id="favorite">Favorite</button>
+<% } %>
 
-<form action="/gists/<%= gist.get('id') %>/favorite" id="favoriteForm" method="post">
-<input type="hidden" name="favorite[gist_id]" value="<%= gist.get('id') %>">
-<input type="submit" id="favoriteButton" name="commit" value="Favorite">
-</form>

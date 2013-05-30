@@ -1,6 +1,6 @@
 G.Views.GistDetailView = Backbone.View.extend({
   events: {
-    "click button#favoriteButton": "toggleFavorite"
+
   },
 
   render: function() {
@@ -10,23 +10,18 @@ G.Views.GistDetailView = Backbone.View.extend({
       gist: that.model
     });
 
+    var ids = that.collection.pluck("id");
+
+    if (_.contains(ids, that.model.get("id"))) {
+      that.model.isFavorite = true;
+    } else {
+      that.model.isFavorite = false;
+    }
+
     that.$el.html(renderedContent);
     return that;
   },
 
-  toggleFavorite: function(event) {
-    $currentState = $("#favoriteForm").attr("method")
-
-    if($currentState === "post"){
-      $("#favoriteForm").attr("method", "delete");
-      $("#favoriteButton").html("Unfavorite");
-
-    }
-    else {
-      $("#favoriteForm").attr("method", "post");
-      $("#favoriteButton").html("Favorite");
-    }
-  }
 
 
 });

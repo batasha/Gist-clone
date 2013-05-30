@@ -1,11 +1,8 @@
 G.Routers.GistsRouter = Backbone.Router.extend({
   initialize: function(sidebar, content, gists) {
-    console.log("creating router");
     this.$sidebar = $(sidebar);
     this.$content = $(content);
     this.gists = gists;
-    this.favoriteGists = new G.Collections.Favorites();
-    this.favoriteGists.fetch();
   },
 
   routes: {
@@ -25,12 +22,13 @@ G.Routers.GistsRouter = Backbone.Router.extend({
 
   detail: function(id) {
     var that = this;
+    var favorites = new G.Collections.Favorites();
+    favorites.fetch({async: false});
 
     var gistDetailView = new G.Views.GistDetailView({
+      collection: favorites,
       model: that.gists.get(id)
     });
-    console.log(gistDetailView.model);
-    console.log(id);
 
     that.$content.html(gistDetailView.render().$el);
   }
